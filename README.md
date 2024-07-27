@@ -38,6 +38,12 @@ This guide provides instructions for setting up and running the Django project.
     ```bash
     pip install django
     ```
+    If you know the basics of Django and just want to copy the project ten install all requirements:
+
+    ```bash
+    pip install -r requirements.txt
+    pip list
+    ```
 
 5. Create a new Django project:
 
