@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeWarriors</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" href="/static/images/faviconlogo.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/static/images/faviconlogo.png" type="image/x-icon">
+</head>
+<body class="theme-light">
+    <!-- Theme Toggler Navbar -->
+     {% include 'navbar.html' %}
+     {% if messages %}
+     <div class="container">
+         {% for message in messages %}
+             <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                 {{ message }}
+                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                 </button>
+             </div>
+         {% endfor %}
+     </div>
+     {% endif %}
+     
+    <!-- Main Content -->
+     {% block content %}
+     {% endblock %}
+
+    <!-- Bootstrap JS and Theme Toggler Script -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- <script>
+        // Theme Toggler functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggler = document.querySelectorAll('.toggle-theme');
+
+            themeToggler.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    const theme = this.getAttribute('data-theme');
+
+                    if (theme === 'light') {
+                        document.body.classList.remove('theme-dark');
+                        document.body.classList.add('theme-light');
+                    } else if (theme === 'dark') {
+                        document.body.classList.remove('theme-light');
+                        document.body.classList.add('theme-dark');
+                    }
+                });
+            });
+        });
+        
+    </script> -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeTogglers = document.querySelectorAll('.toggle-theme');
+            const body = document.body;
+    
+            // Function to set the theme based on localStorage
+            function setThemeFromStorage() {
+                const savedTheme = localStorage.getItem('theme');
+                if (savedTheme === 'dark') {
+                    body.classList.remove('theme-light');
+                    body.classList.add('theme-dark');
+                } else {
+                    body.classList.remove('theme-dark');
+                    body.classList.add('theme-light');
+                }
+            }
+    
+            // Set initial theme when the page loads
+            setThemeFromStorage();
+    
+            // Event listener for theme toggler buttons
+            themeTogglers.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    const theme = this.getAttribute('data-theme');
+    
+                    if (theme === 'light') {
+                        body.classList.remove('theme-dark');
+                        body.classList.add('theme-light');
+                        localStorage.setItem('theme', 'light');
+                    } else if (theme === 'dark') {
+                        body.classList.remove('theme-light');
+                        body.classList.add('theme-dark');
+                        localStorage.setItem('theme', 'dark');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

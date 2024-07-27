@@ -1,0 +1,59 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<style>
+    .theme-dark table , .theme-dark .scoring-explanation {
+        background-color: #333;
+        color: #fff;
+    }
+    .theme-dark .btn-link-dark {
+        color: #fff;
+    }
+    .scoring-explanation {
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-top: 20px;
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Leaderboard</h2>
+            <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>User</th>
+                        <th>Total Problems Solved</th>
+                        <th>Easy Problems Solved</th>
+                        <th>Medium Problems Solved</th>
+                        <th>Hard Problems Solved</th>
+                        <th>Total Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td><a href="{% url 'profile' user.id %}" class="btn btn-sm btn-link-dark">{{ user.username }}</a></td>
+                        <td>{{ user.total_solved }}</td>
+                        <td>{{ user.easy_solved }}</td>
+                        <td>{{ user.medium_solved }}</td>
+                        <td>{{ user.hard_solved }}</td>
+                        <td>{{ user.total_score|default:"0" }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+            <!-- Explanation of scoring system -->
+            <div class="scoring-explanation">
+                <p><strong>Scoring System:</strong> Easy problems score 50 points, medium problems score 100 points, and hard problems score 200 points.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

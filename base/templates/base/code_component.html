@@ -1,0 +1,40 @@
+<style>
+.theme-dark .btn-dark{
+    background-color: white;
+    color: black;
+}
+</style>
+<div class="col-md-6">
+    <div class="container p-4 code-section">
+        <form action="" method="POST" id="form">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="id_language" class="form-label">Language:</label>
+                {{form.language}}
+            </div>
+            <div class="mb-3">
+                <label for="id_code" class="form-label">Code:</label>
+                <textarea id="id_code" name="code" class="form-control" style="resize: none;" rows="10" placeholder="Enter your code here..." required>{{form.data.code}}</textarea>
+            </div>
+            <div class="mb-3">
+                <label for="id_input_data" class="form-label">Input Data:</label>
+                <textarea id="id_input_data" name="input_data" class="form-control h-100" style="resize: none;" rows="5" placeholder="Enter your input data here..."  >{{form.data.input_data}}</textarea>
+            </div>
+            <button type="submit" class="btn btn-dark" value="run_code"  name="run_submit">Run</button>
+            <button type="submit" class="btn btn-dark" value="submit_code" name="run_submit">Submit</button>
+
+        </form>
+    </div>
+    <div class="result">
+        <h1>Result:</h1>
+        <code id="id_output_data" class="form-control h-100" style="resize: none;" rows="5">{{form.output_data}}
+            {% for i in range %}
+            <button class="btn btn-success" disabled>passed {{i}}</button>
+            {% endfor %}
+            {% if last > -1 %}
+            <button class="btn btn-danger" disabled>failed {{last}}</button>
+            {% endif %}
+    </code>
+    </div>
+</div>
+    

@@ -1,0 +1,52 @@
+<!-- problem_list.html -->
+
+{% extends 'main.html' %}  <!-- Extend your base template if you have one -->
+
+{% block content %}
+<style>
+    .theme-dark .btn-dark{
+        background-color: white;
+        color: black;
+    }
+</style>
+<div class="container">
+    <div class="container">
+        <!-- Links section -->
+         <form action="{% url 'home' %}" method="GET">
+            <input name="q" placeholder="Search for problems..." class="form-control"/>
+         </form>
+        <div class="mb-3 mt-1">
+            <a href="{% url 'home' %}" class="btn btn-dark">All</a>
+            <a href="{% url 'home' %}?q={{selected_topic}}&d=easy" class="btn btn-dark">Easy</a>
+            <a href="{% url 'home' %}?q={{selected_topic}}&d=medium" class="btn btn-dark">Medium</a>
+            <a href="{% url 'home' %}?q={{selected_topic}}&d=hard" class="btn btn-dark">Hard</a>
+            {% if request.user.is_authenticated %}
+            <a href="{% url 'home' %}?q=my&d={{selected_difficulty}}" class="btn btn-dark">My</a>
+            {% endif %}
+        </div>
+        <div class="mb-3 mt-1">
+            {% for topic in topics %}
+            <a href="{% url 'home' %}?q={{topic}}&d={{selected_difficulty}}" class="btn btn-dark">{{topic}}</a>
+            {% endfor %}
+        </div>
+    <h1 class="problem-list-title">Problem List</h1>
+    {% for problem in problems %}
+    <div class="card mb-3 {% if is_dark_theme %}theme-dark{% else %}theme-light{% endif %}">
+        <div class="card-body">
+            <h5 class="card-title">{{ problem.id }}. {{ problem.title }}</h5>
+            <p class="card-text">{{ problem.statement|truncatechars:100 }}</p> <!-- Truncate statement to 100 characters -->
+            <a href="{% url 'problem-page' problem.id %}" class="btn btn-dark">Solve Problem</a> <!-- Link to full problem statement -->
+            <p class="card-text">Difficulty: {{ problem.difficulty }} </p>
+            <p class="card-text">Topic: {{problem.topics}} </p>
+            {% if problem.user != None %}
+            <a href="{% url 'profile' problem.user.id %}"><p class="card-text">Created by: {{ problem.user.username }}</p></a> <!-- Assuming problem has a ForeignKey to User -->
+            {% endif %}
+            {% if problem.user == request.user %}
+            <a href="{% url 'create-testcases' problem.id %}" class="btn btn-dark">Add Test Cases</a>
+            <a href="{% url 'create-dummytestcases' problem.id %}" class="btn btn-dark">Add Dummy Test Cases</a>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

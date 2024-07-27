@@ -1,0 +1,44 @@
+{% extends 'main.html' %} 
+{% block content %}
+<style>
+  .dark-theme .problem-container {
+    background-color: #444;
+    color: #fff;
+  }
+  .dark-theme .right-container {
+    background-color: #444;
+    color: #fff;
+  }
+  .right-container textarea {
+    resize: none;
+  }
+</style>
+
+<div class="container right-container">
+  <h3>Test Cases</h3>
+  {% include 'base/problem_component.html' %}
+  <form action="" method="POST">
+    {% csrf_token %}
+  <div class="form-group">
+    <label for="test_case_input">Input:</label>
+    <textarea
+    name="input_data"
+      id="test_case_input"
+      class="form-control"
+      rows="3"
+    ></textarea>
+  </div>
+  <div class="form-group">
+    <label for="test_case_output">Output:</label>
+    <textarea
+    name="output_data"
+      id="test_case_output"
+      class="form-control"
+      rows="3"
+    ></textarea>
+  </div>
+  <button type="submit" class="btn btn-secondary">Add Test Case</button>
+</form>
+</div>
+
+{% endblock %}

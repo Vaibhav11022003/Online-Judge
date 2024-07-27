@@ -1,0 +1,112 @@
+.theme-dark{
+    background-color:#333 ;
+}
+.problem-title {
+    background-color: #F92C85;
+    color: #ffffff;
+}
+.problem-title span{
+    color: #ffffff;
+}
+.down a {
+    color: #F92C85;
+    background-color: white;
+}
+.theme-light .problem-example-testcase {
+    background-color: #FDF5DF;
+    color: #333;
+}
+.theme-light .problem-list-title {
+    color: #333;
+}
+
+.theme-light .card {
+    background-color: #fff;
+    color: #333;
+}
+
+.theme-light .card-title {
+    color: #333;
+}
+
+.theme-light .card-text {
+    color: #666;
+}
+/* Dark theme styles */
+.theme-dark .problem-section {
+    background-color: #444;
+    color: #fff;
+}
+.theme-dark .code-section {
+    background-color: #444;
+    color: #fff;
+}
+.theme-dark .problem-example-testcase {
+    background-color: #FDF5DF;
+    color: #333;
+}
+.theme-dark .form-label{
+    color: #fff;
+}
+.theme-dark .form-control {
+    background-color: #333;
+    color: #fff;
+}
+/* Theme Toggler Navbar */
+.theme-toggler {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+}
+.navbar-dark {
+    background-color: #333;
+    color: #fff;
+}
+.navbar-light {
+    background-color: #f8f9fa;
+    color: #333;
+}
+.theme-toggler .btn {
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.theme-dark .result{
+    background-color: #444;
+    color: #fff;
+}
+.theme-dark {
+    background-color: #333;
+    color: #fff;
+}
+
+.theme-dark .problem-list-title {
+    color: #fff;
+}
+
+.theme-dark .card {
+    background-color: #444;
+    color: #fff;
+}
+.theme-dark .card-title {
+    color: #fff;
+}
+
+.theme-dark .card-text {
+    color: #ccc;
+}
+.theme-dark .btn-dark{
+    background-color: white;
+    color: black;
+}
+.theme-dark .submissions-list .list-group-item {
+    background-color: #333;
+    color: #fff;
+    border-color: #444;
+}
+/* .theme-dark .btn-dark{
+    background-color: white;
+    color: black;
+} */
+ /* General Styles */

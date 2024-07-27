@@ -1,0 +1,39 @@
+
+<style>
+    .theme-dark .btn-link-dark{
+        color: #fff;
+    }
+    .theme-dark .submissions-list .list-group-item {
+        background-color: #333;
+        color: #fff;
+        border-color: #444;
+    }
+    .theme-dark{
+        color: #fff;
+    }
+    </style>
+    <div class="col-md-6">
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Submissions</h5>
+                {% if submissions %}
+                    <ul class="list-group submissions-list">
+                        {% for submission in submissions %}
+                        <li class="list-group-item">
+                            <strong>Problem:</strong> <a href="{% url 'problem-page' submission.problem.id %}" class="btn btn-link-dark">{{ submission.problem.title }}</a> <br>
+                            {% if submission.status == "passed" %}
+                            <strong>Result:</strong> {{ submission.status }} successfully<br>
+                            {% else %}
+                            <strong>Result:</strong> {{ submission.status }}: {{submission.passed_testcases}} cases passed<br>
+                            {% endif %}
+                            <strong>Submitted At:</strong> {{ submission.timestamp|timesince }} ago
+                            <a href="{% url 'submission-page' submission.id %}" class="btn btn-link-dark"><strong>View</strong></a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No submissions yet.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>

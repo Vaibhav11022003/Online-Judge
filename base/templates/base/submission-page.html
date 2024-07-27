@@ -1,0 +1,28 @@
+<!-- submission_detail.html -->
+
+{% extends 'main.html' %}  <!-- Extend your base template if you have one -->
+
+{% block content %}
+<style>
+    .theme-dark .submission-code {
+    background-color: #333333;
+    color: #ffffff;
+}
+</style>
+<div class="container">
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title">Submission Detail</h5>
+            <p><strong>User:</strong> <a href="{% url 'profile' submission.user.id %}">@{{ submission.user.username }}</a></p>
+            <p><strong>Problem:</strong><a href="{% url 'problem-page' submission.problem.id %}"> {{ submission.problem.title }}</a></p>
+            <p><strong>Language:</strong> {{ submission.language }}</p>
+            <p><strong>Code:</strong></p>
+            <pre><code class="submission-code">{{ submission.code }}</code></pre>
+            <p><strong>Expected Output:</strong></p>
+            <pre><code class="submission-code">{{ submission.output_data}}</code></pre>
+            <p><strong>Result:</strong> {{ submission.status }}</p>
+            <p><strong>Submitted At:</strong> {{ submission.timestamp}}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

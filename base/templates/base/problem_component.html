@@ -1,0 +1,46 @@
+<div class="problem-title p-3">
+  <h1 class="up">{{ problem.id }}. {{ problem.title }}</h1>
+  <div class="down">
+    <a href="{% url 'user-submissions' problem.id %}" class="btn"
+      >My submissions:</a
+    >
+    <a href="{% url 'all-submissions' problem.id %}" class="btn"
+      >All submissions:</a
+    >
+    <span class="btn disabled">{{ problem.difficulty }}</span>
+  </div>
+</div>
+<div class="problem-body">
+  <div class="problem-sub">
+    <h4>STATEMENT:</h4>
+    <p>{{ problem.statement }}</p>
+  </div>
+  <div class="problem-sub">
+    <h4>CONSTRAINTS:</h4>
+    <p>{{ problem.constraints }}</p>
+  </div>
+  <div class="problem-sub">
+    <h4>INPUTS:</h4>
+    <p>{{ problem.inputs }}</p>
+  </div>
+  <div class="problem-sub">
+    <h4>OUTPUTS:</h4>
+    <p>{{ problem.outputs }}</p>
+  </div>
+  <div class="problem-sub">
+    <h4>EXAMPLE:</h4>
+    <div class="problem-example-testcase my-3 p-3">
+      {% for dummy_test_case in dummy_test_cases %}
+      <h4>TEST CASE: {{ forloop.counter }}</h4>
+      <h5>INPUT:</h5>
+      <p><code>{{ dummy_test_case.input_data }}</code></p>
+      <h5>OUTPUT:</h5>
+      <p><code>{{ dummy_test_case.output_data }}</code></p>
+      {% if dummy_test_case.body %}
+      <h5>DESCRIPTION:</h5>
+      <p><code>{{ dummy_test_case.body }}</code></p>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>

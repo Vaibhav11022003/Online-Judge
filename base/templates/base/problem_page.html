@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="problem-section" style="padding: 20px;">    
+                {% include 'base/problem_component.html' %}
+            </div>
+        </div>
+        {% include 'base/code_component.html' %}
+    </div>
+</div>
+{% endblock %}
+

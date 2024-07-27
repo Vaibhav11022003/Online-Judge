@@ -1,0 +1,53 @@
+{% extends 'main.html' %}
+{% block content %}
+<style>
+    .dark-theme .problem-container{
+        background-color: #444;
+        color: #fff;
+    }
+    .dark-theme .right-container{
+        background-color: #444;
+        color: #fff;
+    }
+    .right-container textarea{
+        resize: none;
+    }
+</style>
+        <!-- Left Column: Create Problem Form -->
+        <div class="col-md-6 mb-4">
+            <div class="problem-container">
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="id_title" class="form-label">Title:</label>
+                        {{ form.title }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_difficulty" class="form-label">Topic:</label>
+                        {{ form.topics }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_difficulty" class="form-label">Difficulty:</label>
+                        {{ form.difficulty }}
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_statement" class="form-label">Statement:</label>
+                        <textarea id="id_statement" name="statement" class="form-control" rows="5" required style="resize: none;">{{ form.data.statement }}</textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_constraints" class="form-label">Constraints:</label>
+                        <textarea id="id_constraints" name="constraints" class="form-control" rows="3" required style="resize: none;">{{ form.data.constraints }}</textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_inputs" class="form-label">Inputs:</label>
+                        <textarea id="id_inputs" name="inputs" class="form-control" rows="3" required style="resize: none;">{{ form.data.inputs }}</textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_outputs" class="form-label">Outputs:</label>
+                        <textarea id="id_outputs" name="outputs" class="form-control" rows="3" required style="resize: none;">{{ form.data.outputs }}</textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Problem</button>
+                </form>
+            </div>
+        </div>
+{% endblock %}
