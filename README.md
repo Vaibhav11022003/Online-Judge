@@ -189,7 +189,7 @@ The output of the compilation and execution process can be:
 - The system should handle various programming languages by generating appropriate files and commands for compilation and execution.
 
 ## Database Schema Overview
-<img src="readme_images/er_diagram.png" alt="ER daigram" width="600"/>
+<img src="readme_images/erDiagram.png" alt="ER daigram" width="600"/>
 ### Tables
 
 #### `users`
